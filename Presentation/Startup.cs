@@ -1,3 +1,4 @@
+using AutoMapper;
 using DataAccess;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Services;
 using Services.Abstract;
+using Services.Config;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -48,6 +50,16 @@ namespace Presentation
             });
 
             services.AddScoped<IUserService, UserService>();
+
+
+            var mappingConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new MapperProfile());
+            });
+
+            services.AddSingleton(mappingConfig.CreateMapper());
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

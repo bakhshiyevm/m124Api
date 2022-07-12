@@ -11,12 +11,12 @@ namespace Services.Abstract
         
     }
 
-    public interface IBaseService<TModel> : IBaseService where TModel : class
+    public interface IBaseService<TReq,TEntity,TRes> : IBaseService where TEntity : class
     {
-        public TModel Get(int id);
-        public IEnumerable<TModel> Get();
-        public TModel Create(TModel user);
-        public TModel Update(TModel user);
+        public TRes Get(int id);
+        public IEnumerable<TRes> Get();
+        public TRes Create(TReq user);
+        public TRes Update(TReq user);
         public void Delete(int id);
     }
 }

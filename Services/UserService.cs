@@ -6,28 +6,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DataAccess;
+using DTO;
+using AutoMapper;
 
 namespace Services
 {
-    public class UserService : BaseService<User>, IUserService
+    public class UserService : BaseService<UserDTO,User, UserDTO>, IUserService
     {
-        public UserService(AppDbContext db) : base(db)
+        public UserService(AppDbContext db, IMapper mapper) : base(db, mapper)
         {
-
         }
 
-        public User Login(string ps, string us)
+        public UserDTO Login(string ps, string us)
         {
+           
             var res = _db.Users.Where(x => x.Name == us && x.Password == ps);
-            if (res.Count() == 1) 
+            if (res.Count() == 1)
             {
-                return res.First();
+                var dto  = _mapper.Map<User,UserDTO> (res.First());
+                return dto;
             }
-            else 
+            else
             {
                 throw new Exception("User tapilmadi");
             }
-            
+
         }
     }
 }

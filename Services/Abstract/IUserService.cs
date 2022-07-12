@@ -1,4 +1,5 @@
 ﻿using DataAccess.Entities;
+using DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace Services.Abstract
 {
-    public interface IUserService : IBaseService<User>
+    public interface IUserService : IBaseService<UserDTO, User, UserDTO>
     {
-        public User Login(string ps, string us);
+        public UserDTO Login(string ps, string us);
     }
 }

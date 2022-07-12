@@ -6,6 +6,7 @@ using DataAccess.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DTO;
 
 namespace Presentation.Controllers
 {
@@ -45,7 +46,7 @@ namespace Presentation.Controllers
 
         [HttpGet]
         [Route("get")]
-        public IEnumerable<User> Get()
+        public IEnumerable<UserDTO> Get()
         {
 
            return _userService.Get();
@@ -53,7 +54,7 @@ namespace Presentation.Controllers
 
         [HttpPost]
         [Route("create")]
-        public User Create([FromBody] User user)
+        public UserDTO Create([FromBody] UserDTO user)
         {
 
             return _userService.Create(user);
@@ -61,7 +62,7 @@ namespace Presentation.Controllers
 
         [HttpPut]
         [Route("update")]
-        public User Update([FromBody] User user)
+        public UserDTO Update([FromBody] UserDTO user)
         {
 
             return _userService.Update(user);
