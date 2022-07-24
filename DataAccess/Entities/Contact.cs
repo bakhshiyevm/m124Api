@@ -8,12 +8,14 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Entities
 {
-    public class BaseEntity
+    public class Contact : BaseEntity
     {
-        [Key]
-        public int Id { get; set; }
-        public DateTime CreateDate { get; set; }
-        public DateTime UpdateDate { get; set; }
+        [Required]
+        public string Phone { get; set; }
+        public string Adress { get; set; }
+        public string Email { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
 
     }
 }

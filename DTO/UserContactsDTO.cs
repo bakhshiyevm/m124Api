@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class UserDTO
+    public class UserContactsDTO
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Surname { get; set; }
-        public string Password { get; set; }
 
+        public List<ContactDTO> Contacts { get; set; }
     }
 }

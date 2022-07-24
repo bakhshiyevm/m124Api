@@ -28,7 +28,7 @@ namespace Services
             _mapper = mapper;
         }
 
-        public TRes Create(TReq model)
+        public virtual TRes Create(TReq model)
         {
             var ent = _mapper.Map<TReq, TEntity>(model);
 
@@ -38,7 +38,7 @@ namespace Services
             return  res;
         }
 
-        public void Delete(int id)
+        public virtual void Delete(int id)
         {
 
             var ent = _dbSet.Find(id);
@@ -48,14 +48,14 @@ namespace Services
 
         }
 
-        public TRes Get(int id)
+        public virtual TRes Get(int id)
         {
             var ent =_dbSet.Find(id);
             var res = _mapper.Map<TEntity, TRes>(ent);
             return res;
         }
 
-        public IEnumerable<TRes> Get()
+        public virtual IEnumerable<TRes> Get()
         {
             var ents = _dbSet.ToList();
 
@@ -63,7 +63,7 @@ namespace Services
             return res;
         }
 
-        public TRes Update(TReq model)
+        public virtual TRes Update(TReq model)
         {
             var ent = _mapper.Map<TReq, TEntity>(model);
             _dbSet.Update(ent);

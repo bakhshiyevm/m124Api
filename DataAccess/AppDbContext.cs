@@ -11,10 +11,13 @@ namespace DataAccess
     public class AppDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<UserRoles> UserRoles { get; set; }
 
         public AppDbContext(DbContextOptions options) : base(options)
         {
-            Database.EnsureCreated();
+            
         }
 
     }

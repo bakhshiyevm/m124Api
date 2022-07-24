@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using DataAccess;
 using DTO;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace Services
 {
@@ -15,6 +16,16 @@ namespace Services
     {
         public UserService(AppDbContext db, IMapper mapper) : base(db, mapper)
         {
+
+        }
+
+        public List<UserContactsDTO> GetUserContacts() 
+        {
+            var res = _db.Users.Include(x => x.Contacts).ToList();
+
+            var dto = _mapper.Map<List<User>, List<UserContactsDTO>>(res);
+            
+            return dto;
         }
 
         public UserDTO Login(string ps, string us)

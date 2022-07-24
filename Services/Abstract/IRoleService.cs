@@ -8,10 +8,7 @@ using System.Threading.Tasks;
 
 namespace Services.Abstract
 {
-    public interface IUserService : IBaseService<UserDTO, User, UserDTO>
+    public interface IRoleService : IBaseService<RoleDTO, Role, RoleDTO>
     {
-        public UserDTO Login(string ps, string us);
-
-        public List<UserContactsDTO> GetUserContacts();
     }
 }

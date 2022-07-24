@@ -15,7 +15,28 @@ namespace Services.Config
         {
             CreateMap<UserDTO, User>();
 
+            CreateMap<User, UserContactsDTO>()
+                .ForMember(x=>x.Contacts , y=>y.MapFrom(src=> src.Contacts));
+
             CreateMap<User, UserDTO>();
+
+
+            CreateMap<ContactDTO, Contact>();
+
+            CreateMap<Contact, ContactDTO>();
+
+
+            CreateMap<RoleDTO, Role>();
+
+            CreateMap<Role, RoleDTO>();
+
+
+            CreateMap<UserRoleDTO, UserRoles>();
+                
+
+            CreateMap<UserRoles, UserRoleDTO>()
+                 .ForMember(m => m.UserName, opt => opt.MapFrom(src => src.User.Name))
+                 .ForMember(m => m.RoleName, opt => opt.MapFrom(src => src.Role.Name));
         }
     }
 }
